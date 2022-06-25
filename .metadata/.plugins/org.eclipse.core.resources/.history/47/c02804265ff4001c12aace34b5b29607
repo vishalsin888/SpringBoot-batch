@@ -1,0 +1,10 @@
+package com.app.controller;
+
+@org.springframework.stereotype.Controller
+public class Controller {
+	
+	public String home() {
+		return "test";
+	}
+
+}

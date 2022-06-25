@@ -1,0 +1,38 @@
+$( document ).ready(function() {
+   
+   $("#signup_form").on("submit", function(){
+		createUser();
+	});
+   
+   
+});
+
+function createUser(){
+
+	var signupData = {};
+	signupData["userName"] = $("#name").val();
+	signupData["password"] = $("#pwd").val();
+	signupData["email"] = $("#email").val();
+	signupData["address"] = $("#addr").val();
+	//ajax data /createUser endpoint 
+	alert(JSON.stringify(signupData));
+	$.ajax({
+		
+		type : 'POST',
+		url: '/createUser',
+		dataType: 'json',
+        cache: false,
+        contentType : "application/json",
+		data : JSON.stringify(signupData),
+		success : function(response){
+			console.log(response);
+			alert('success');
+			window.location.href='/login';
+		},
+		error :  function(error){
+			alert('error');
+			console.log(error);
+		},
+		
+	});
+}
